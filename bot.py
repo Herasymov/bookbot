@@ -35,7 +35,7 @@ def Buttons(message):
     markup.row('Детективы')
     markup.row('Детские')
     markup.row('Новеллы')
-    markup.row('Исторические романы')
+    markup.row('Исторические')
     bot.send_message(message.chat.id, "Выберите жанр:", reply_markup=markup)
 
 
@@ -88,10 +88,10 @@ def Novel(message):
     bot.send_message(message.chat.id, "Хочу посоветовать вам следующие 10 замечательных книг", reply_markup=keyboard)
 
 
-@bot.message_handler(regexp='Исторические романы')
+@bot.message_handler(regexp='Исторические')
 def HistRoman(message):
     keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("Показать", callback_data=str(message.chat.id) + ' ' + 'Исторические романы'))
+    keyboard.add(types.InlineKeyboardButton("Показать", callback_data=str(message.chat.id) + ' ' + 'Исторические'))
     bot.send_message(message.chat.id, "Хочу посоветовать вам следующие 10 замечательных книг", reply_markup=keyboard)
 
 
