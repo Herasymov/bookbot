@@ -11,8 +11,7 @@ url = {'Ужасы':'https://knigopoisk.org/ratings/luchshie_knigi_uzhasov',
        'Фантастика':'https://knigopoisk.org/ratings/knigi_fantastika_luchshee',
        'Детективы':'https://knigopoisk.org/ratings/knigi_detektivy',
        'Детские':'https://knigopoisk.org/ratings/knigi_skazki',
-       'Новеллы':'https://knigopoisk.org/ratings/knigi_novella',
-       'Исторические романы':'https://knigopoisk.org/ratings/knigi_istoricheskie_romany' }
+       'Новеллы':'https://knigopoisk.org/ratings/knigi_novella'}
 
 bot = telebot.TeleBot(config.token)
 
@@ -35,7 +34,6 @@ def Buttons(message):
     markup.row('Детективы')
     markup.row('Детские')
     markup.row('Новеллы')
-    markup.row('Исторические')
     bot.send_message(message.chat.id, "Выберите жанр:", reply_markup=markup)
 
 
@@ -85,13 +83,6 @@ def Fairytail(message):
 def Novel(message):
     keyboard = types.InlineKeyboardMarkup()
     keyboard.add(types.InlineKeyboardButton("Показать", callback_data=str(message.chat.id) + ' ' + 'Новеллы'))
-    bot.send_message(message.chat.id, "Хочу посоветовать вам следующие 10 замечательных книг", reply_markup=keyboard)
-
-
-@bot.message_handler(regexp='Исторические')
-def HistRoman(message):
-    keyboard = types.InlineKeyboardMarkup()
-    keyboard.add(types.InlineKeyboardButton("Показать", callback_data=str(message.chat.id) + ' ' + 'Исторические'))
     bot.send_message(message.chat.id, "Хочу посоветовать вам следующие 10 замечательных книг", reply_markup=keyboard)
 
 
